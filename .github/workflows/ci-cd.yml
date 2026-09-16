@@ -1,0 +1,42 @@
+name: CI/CD Pipeline EduBlog
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copiar código do repositório
+        uses: actions/checkout@v4
+
+      # --- Configuração e Teste do Back-end ---
+      - name: Configurar Node.js (Back-end)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Instalar dependências e testar Back-end
+        run: |
+          cd backend
+          npm install
+
+      # --- Configuração e Build do Front-end ---
+      - name: Configurar Node.js (Front-end)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Instalar dependências e fazer Build do Front-end
+        run: |
+          cd frontend
+          npm install
+          npm run build
