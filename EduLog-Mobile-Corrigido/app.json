@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "EduLog Mobile",
+    "slug": "edulog-mobile",
+    "scheme": "edulog",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "plugins": [
+      "expo-secure-store",
+      "expo-status-bar"
+    ],
+    "android": {
+      "package": "com.edulog.mobile"
+    },
+    "ios": {
+      "bundleIdentifier": "com.edulog.mobile"
+    }
+  }
+}
